@@ -1,4 +1,9 @@
 module.exports = {
+  env: {
+    "browser": true,
+    "amd": true,
+    "node": true
+  },
   extends: [
     // By extending from a plugin config, we can get recommended rules without having to add them manually.
     "eslint:recommended",
