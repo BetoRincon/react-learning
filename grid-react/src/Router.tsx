@@ -1,15 +1,15 @@
 import React from 'react';
-import App from './App'
+
 import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
-
+import { LayoutFactory } from './LayoutFactory';
 
 
 const router = createBrowserRouter([{
     path:"/",
-    element: <App />
+    element: <LayoutFactory />
 }]);
 
 export function Router(){

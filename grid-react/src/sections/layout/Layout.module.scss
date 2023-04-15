@@ -1,0 +1,24 @@
+.header{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em;
+    cursor: pointer;
+}
+.grid{
+    display: grid;
+    border: 1px solid black;
+    gap: 1rem;
+    grid-auto-rows: 10rem;
+    //grid-template-columns: repeat(auto-fit, 10rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%,25rem), 1fr));
+}
+
+/*.grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}*/
+
+.item{
+    border: 1px solid black;
+}
