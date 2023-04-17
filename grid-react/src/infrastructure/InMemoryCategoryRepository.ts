@@ -6,5 +6,4 @@ export class InMemoryCategoryRepository implements CategoryRepository{
     search(): Promise<Category[]> {
         return Promise.resolve(categories);
     }
-
 }
