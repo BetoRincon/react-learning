@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Layout.module.scss"
 import { InMemoryCategoryRepository } from "../../infrastructure/InMemoryCategoryRepository";
-import { Category } from "../../domain/Category";
-
+import { InMemoryProductRepository } from "../../infrastructure/InMemoryProductRepository";
+import { useGetCategories } from "./useGetCategories";
+import { useGetProducts } from "./useGetProducts";
 
 
 // eslint-disable-next-line no-empty-pattern
-export function Layout({ inMemoryCategoryRepository } : {inMemoryCategoryRepository : InMemoryCategoryRepository}){
+export function Layout({
+        inMemoryCategoryRepository,
+        inMemoryProductRepository
+    } : {
+        inMemoryCategoryRepository : InMemoryCategoryRepository,
+        inMemoryProductRepository : InMemoryProductRepository
+}){
 
-    const [categories, setCategories] = useState< Category[]>([]);
-    useEffect(() => {
-        inMemoryCategoryRepository
-            .search()
-            .then(categories => setCategories(categories))
-    },[])
+    const { categories } = useGetCategories(inMemoryCategoryRepository);
+    const { products } = useGetProducts(inMemoryProductRepository);
 
     return (
         <>
@@ -23,18 +26,17 @@ export function Layout({ inMemoryCategoryRepository } : {inMemoryCategoryReposit
                         <strong>{category.name}</strong>
                     </div>
                 ) ) }
-
             </header>
             <div className={styles.grid}>
-                <div className={styles.item}>1</div>
-                <div className={styles.item}>2</div>
-                <div className={styles.item}>3</div>
-                <div className={styles.item}>1</div>
-                <div className={styles.item}>2</div>
-                <div className={styles.item}>3</div>
-                <div className={styles.item}>1</div>
-
-
+                {
+                    products.map((product) => (
+                        <div className={styles.item} key={product.id}>
+                            <strong> { product.name } </strong>
+                            <p>{ product.description } </p>
+                            <img src={product.image} alt={product.description} />
+                        </div>
+                    ) )
+                }
             </div>
         </>
     );
