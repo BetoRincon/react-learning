@@ -20,6 +20,7 @@ export function Layout({
 
     return (
         <>
+            <h1>El Menú</h1>
             <header className={styles.header}>
                 { categories.map(category => (
                     <div className={styles.category} key={category.id} >
