@@ -11,8 +11,8 @@ export function LayoutFactory(){
 
     return(
         <Layout
-            inMemoryCategoryRepository={inMemoryCategoryRepository}
-            inMemoryProductRepository={inMemoryProductRepository}
+            categoryRepository={inMemoryCategoryRepository}
+            productRepository={inMemoryProductRepository}
         />
     );
 }

@@ -1,44 +1,32 @@
 import React from "react";
-import styles from "./Layout.module.scss"
-import { InMemoryCategoryRepository } from "../../infrastructure/InMemoryCategoryRepository";
-import { InMemoryProductRepository } from "../../infrastructure/InMemoryProductRepository";
+import styles from "./Layout.module.scss";
 import { useGetCategories } from "./useGetCategories";
 import { useGetProducts } from "./useGetProducts";
+import { CategoryRepository } from "../../domain/CategoryRepository";
+import { ProductRepository } from "../../domain/ProductRepository";
+import { CategoryList } from "./categoryList/CategoryList";
+import { ProductList } from "./productList/ProductList";
 
 
 // eslint-disable-next-line no-empty-pattern
 export function Layout({
-        inMemoryCategoryRepository,
-        inMemoryProductRepository
+        categoryRepository,
+        productRepository
     } : {
-        inMemoryCategoryRepository : InMemoryCategoryRepository,
-        inMemoryProductRepository : InMemoryProductRepository
+        categoryRepository : CategoryRepository,
+        productRepository : ProductRepository
 }){
 
-    const { categories } = useGetCategories(inMemoryCategoryRepository);
-    const { products } = useGetProducts(inMemoryProductRepository);
+    const { categories } = useGetCategories(categoryRepository);
+    const { products } = useGetProducts(productRepository);
 
     return (
         <>
-            <h1>El Menú</h1>
-            <header className={styles.header}>
-                { categories.map(category => (
-                    <div className={styles.category} key={category.id} >
-                        <strong>{category.name}</strong>
-                    </div>
-                ) ) }
+            <h1 className={styles.title}>El Menú</h1>
+            <header className={styles.header} >
+                < CategoryList categories={ categories } />
             </header>
-            <div className={styles.grid}>
-                {
-                    products.map((product) => (
-                        <div className={styles.item} key={product.id}>
-                            <strong> { product.name } </strong>
-                            <p>{ product.description } </p>
-                            <img src={product.image} alt={product.description} />
-                        </div>
-                    ) )
-                }
-            </div>
+            <ProductList products={products}/>
         </>
     );
 };

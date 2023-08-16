@@ -4,25 +4,8 @@
     margin: 1em;
     cursor: pointer;
 }
-.grid{
-    display: grid;
-    border: 1px solid black;
-    gap: 1rem;
-    //grid-template-columns: repeat(auto-fit, 10rem);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%,25rem), 1fr));
+
+.title{
+    text-align: center;
 }
-
-/*.grid{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}*/
-
-.item{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 
