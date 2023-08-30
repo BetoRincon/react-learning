@@ -16,14 +16,14 @@ describe("Layout Section", () =>{
     expect(title).toBeInTheDocument();
   });
 
-  // it("should show the Categories", async () => {
-  //   renderWithRouter(<LayoutFactory />)
-  //   const firstCategory = Categories[0];
-  //   const category = await screen.findByRole("heading", {
-  //     name: firstCategory.name,
-  //   } );
-  //   expect(category).toBeInTheDocument();
-  // });
+  it("should show the Categories", async () => {
+    renderWithRouter(<LayoutFactory />)
+    const firstCategory = Categories[0];
+    const category = await screen.findByRole("link", {
+      name: firstCategory.name,
+    } );
+    expect(category).toBeInTheDocument();
+  });
 
   it("should show the Products", async () => {
     renderWithRouter(<LayoutFactory />)
