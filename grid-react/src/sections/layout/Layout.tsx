@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Layout.module.scss";
 import { useGetCategories } from "./useGetCategories";
 import { useGetProducts } from "./useGetProducts";
@@ -18,10 +18,11 @@ export function Layout({
         productRepository : ProductRepository
 }){
 
+    const [category, setCategory] = useState('')
     const { categories } = useGetCategories(categoryRepository);
     const { products } = useGetProducts(productRepository);
     const productsGrid = new ProductsGrid(products)
-    const productList = productsGrid.getProducts()
+    const productList = productsGrid.getProducts(category)
     console.log('productList: ', productList )
 
 
@@ -29,7 +30,10 @@ export function Layout({
         <>
             <h1 className={styles.title}>El Menú</h1>
             <header className={styles.header} >
-                < CategoryList categories={ categories } />
+                < CategoryList
+                    categories={ categories }
+                    onChangeCategory={(categoryId: string) => setCategory(categoryId)}
+                />
             </header>
             <ProductList
                 products={productList}

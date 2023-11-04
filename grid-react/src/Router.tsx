@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { LayoutFactory } from './LayoutFactory';
 import { CategoryDetail } from './sections/layout/CategoryDetail/CategoryDetail';
+import { ProductDetailFactory } from './sections/layout/productList/ProductDetailFactory';
 
 
 const router = createBrowserRouter([
@@ -13,9 +14,14 @@ const router = createBrowserRouter([
         path:"/",
         element: <LayoutFactory />
     },
+    // {
+    //     path:"/category/:categoryId",
+    //     element: <CategoryDetail />
+    // }
     {
-        path:"/category/:categoryId",
-        element: <CategoryDetail />
+            path:"/products/:productId",
+            element: <ProductDetailFactory/>
+
     }
 ]);
 

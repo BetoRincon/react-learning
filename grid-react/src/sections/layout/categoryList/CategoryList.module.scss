@@ -1,0 +1,29 @@
+.header{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	overflow-x: hidden;
+	white-space: nowrap;
+}
+
+.header nav {
+	overflow-x: auto;
+}
+
+.header nav ul {
+	padding-left: 0;
+}
+
+.list {
+	// overflow-x: ;
+}
+
+.category {
+	list-style: none;
+	display: inline-block;
+	padding: 2px;
+}
+
+.category:hover {
+	color: rgb(255, 153, 0);
+}

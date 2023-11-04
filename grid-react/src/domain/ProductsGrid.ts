@@ -33,10 +33,10 @@ export class ProductsGrid {
 		return rows
 	}
 
-	getProducts(): Product[] {
+	getProducts(categoryId? :string): Product[] {
 		const products: Product[] = []
 		this.rows.forEach(row => products.push(...row.getProducts()))
-		return products
+		return categoryId ? products.filter(product => product?.categories.includes(categoryId)) : products
 
 	}
 
